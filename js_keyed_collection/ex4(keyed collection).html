@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyed Collections</title>
+</head>
+<body>
+    <script>
+        let users = [{
+    id: 1,
+    name: 'John'
+    },
+    {
+    id: 2,
+    name: 'Mohan'
+    },
+    {
+    id: 3,
+    name: 'Raam'
+    },
+    {
+    id: 4,
+    name: 'Krishna'
+    },
+    {
+    id: 5,
+    name: 'Boss'
+    }
+   ]
+   let userNames = users.map(function(user) {
+    console.log(user.name)
+   });
+   let userNms = [];
+   users.forEach(function (user) {
+    userNms.push(user.name);
+   });
+   console.log(userNms);
+   const user1 = new Map();
+   user1.set('id', 1);
+   user1.set('name', 'John');
+   console.log(user1.get('id'));
+   let iterator = user1.entries();
+   console.log(iterator.next().value);
+   console.log(iterator.next().value);
+   //Example of iteration over a map collection
+   let userIDs = new Map();
+   let user2 = {name: 'John'}, user3 = {name: 'Mohan'}, user4 = {name:
+   'Kumar'};
+   userIDs.set(user2, 1) .set(user3, 2) .set(user4, 3);
+   // Method 1
+   for (let [name, id] of userIDs) {
+    console.log(name);
+    console.log(id);
+   }
+   // Method 2
+   userIDs.forEach((id, name) => {
+    console.log(name);
+    console.log(id);
+   });//To convert an object to a map, we can use the Object.entries() method
+   const obj = {
+    'name': 'John',
+    'id': 1,
+    }
+   const map = new Map(Object.entries(obj));
+   console.log(map.get('name')) 
+   //Compare an object to a map and see how they do in terms of
+   performance
+   let obj2 = {}, map2 = new Map();
+   let users4 = ["John", "Mohan", "Jane", "Jane", "Anne", "John",
+   "Murray", "Jane", "Jane", "Anne"];
+   for (let i = 0; i < users4.length; i++) {
+    obj2[i] = users4[i];
+    map2.set(i, users4[i]);
+   }
+   let result;
+   console.time('Object'); 
+   result = obj2.hasOwnProperty("Anne"); 
+   console.timeEnd('Object');
+   console.time('Map'); 
+   result = map2.has("Anne"); 
+   console.timeEnd('Map')
+    </script>
+</body>
+</html>
