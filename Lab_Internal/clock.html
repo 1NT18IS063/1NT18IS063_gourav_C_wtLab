@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+	<title>Digital Clock</title>
+
+	<style>
+		#clock {
+			font-size: 120px;
+			width: 900px;
+			margin: 200px;
+			text-align: center;
+			border: 2px solid black;
+			border-radius: 20px;
+		}
+        .btn{
+            background-color: yellow;
+            border: none;
+        }
+        .btn1{
+            background-color: lime;
+            border: none;
+        }
+        .btn2{
+            background-color: orange;
+            border: none;
+        }
+        .btn3{
+            background-color: #ff3333;
+            border: none;
+        }
+        .btn4{
+            background-color: #0080ff;
+            border: none;
+        }
+        .btn5{
+            background-color: white;
+            border: none;
+        }
+	</style>
+</head>
+
+<body>
+	<div id="clock">00:00:00</div>
+    <div style="text-align: center; margin-top: -100px;">
+        <label class="para">Change Webpage Background To:</label><br>
+        <button class="btn" type="button" onclick="changeBackground('yellow');">Yellow</button>
+        <button class="btn1" type="button" onclick="changeBackground('lime');">Lime</button>
+        <button class="btn2" type="button" onclick="changeBackground('orange');">Orange</button>
+        <button class="btn3" type="button" onclick="changeBackground('#ff3333');">Red</button>
+        <button class="btn4" type="button" onclick="changeBackground('#0080ff');">Blue</button>
+        <button class="btn5" type="button" onclick="changeBackground('white');">White</button>
+    </div>
+    
+
+	<script>
+		setInterval(showTime, 1000);  
+		function showTime() {     
+			let time = new Date();    
+			let hour = time.getHours();   
+			let min = time.getMinutes();
+			let sec = time.getSeconds();
+			am_pm = "AM";   
+        
+			if (hour > 12) {
+				hour -= 12;
+				am_pm = "PM";
+			}
+			if (hour == 0) {
+				hour = 12;
+				am_pm = "AM";
+			}
+      
+			hour = hour < 10 ? "0" + hour : hour;
+			min = min < 10 ? "0" + min : min;
+			sec = sec < 10 ? "0" + sec : sec;
+
+			let currentTime = hour + ":"
+				+ min + ":" + sec + am_pm;
+        
+			document.getElementById("clock")
+				.innerHTML = currentTime;
+		}
+        
+
+		showTime();
+
+
+        function changeBackground(color) {
+            document.body.style.background = color; 
+        }
+        function changeClock(color) {
+            document.getElementById("clock").style.background - color;
+        }
+	</script>
+</body>
+
+</html>
+
+
+
+    
+    
+    
+    
+    
+    
